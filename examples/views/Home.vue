@@ -2,6 +2,8 @@
   <div class="home">
     <co-button type="primary">提交</co-button>
     <!-- <co-table :theadData="theadData"></co-table> -->
+    <screen-loading></screen-loading>
+    <screen-dropdown-menu></screen-dropdown-menu>
   </div>
 </template>
 
@@ -16,3 +18,8 @@ export default {
   components: {}
 }
 </script>
+<style scoped>
+.home {
+  background: black;
+}
+</style>

@@ -6,6 +6,10 @@ vuePress 官网:
 ## 命令集合
 
 - npm run serve 运行 examples 下的代码
+- npm run build 打包 examples 下面的资源
+- npm run build:lib 用来打包 packages 的组件代码到 lib 目录下
+
+## 发包步骤
 
 ## 目录结构
 
