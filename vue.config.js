@@ -1,6 +1,6 @@
 const path = require('path')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
@@ -14,6 +14,16 @@ module.exports = {
   lintOnSave: true,
   // 扩展webpack配置,使packages加入编译
   chainWebpack: config => {
+    config.module
+      .rule('svg')
+      .include.add(resolve('packages/svg-icon/src/svg'))
+      .end()
+      .test(/\.svg$/)
+      .use('file-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]'
+      })
     config.module
       .rule('js')
       .include.add(resolve('packages'))

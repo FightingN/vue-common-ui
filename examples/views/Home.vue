@@ -3,7 +3,7 @@
     <co-button type="primary">提交</co-button>
     <!-- <co-table :theadData="theadData"></co-table> -->
     <screen-loading></screen-loading>
-    <screen-dropdown-menu></screen-dropdown-menu>
+    <screen-dropdown-menu width="200px"></screen-dropdown-menu>
   </div>
 </template>
 
@@ -20,6 +20,8 @@ export default {
 </script>
 <style scoped>
 .home {
-  background: black;
+  /* background: #061a3b; */
+  background: #2c3e50;
+  padding: 50px;
 }
 </style>

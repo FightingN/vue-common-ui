@@ -1,22 +1,40 @@
 <template>
-  <div :style="{width:width,height:height}"
-       ref="screenDropdownMenu"
-       class="screen-dropdown-menu">
-    <div class="screen-dropdown-menu-frame"
-         @click="onVisibleChange">
-      <div class="select-label">{{selectedLabel}}</div>
-      <svg-icon icon-class="bottom-sword"
-                fill="#606266">
-      </svg-icon>
+  <div
+    :style="{ width: width, height: height }"
+    ref="screenDropdownMenu"
+    class="screen-dropdown-menu"
+  >
+    <div class="screen-dropdown-menu-frame" @click="onVisibleChange">
+      <div class="select-label">{{ selectedLabel }}</div>
+      <svg-icon icon-class="bottom-sword" fill="#606266"> </svg-icon>
     </div>
-    <div class="screen-dropdown-menu-list"
-         :style="{height: dropdownMenuVisible ? dataList.length > 4 ? '260px' : `${dataList.length * 50 + 10}px` : '0px', opacity: dropdownMenuVisible ? '1' : '0', '--top': top }">
-      <div class="screen-dropdown-menu-list-border"
-           :style="{overflowY: dataList.length > 5 ? 'auto' : 'hidden'}">
-        <div :class="['screen-dropdown-menu-list-item', item.select ? 'screen-dropdown-menu-list-item-active' : '']"
-             @click.stop="onChooseItem(item)"
-             v-for="item in dataList"
-             :key="item.value">{{item.label}}</div>
+    <div
+      class="screen-dropdown-menu-list"
+      :style="{
+        height: dropdownMenuVisible
+          ? dataList.length > 4
+            ? '260px'
+            : `${dataList.length * 50 + 10}px`
+          : '0px',
+        opacity: dropdownMenuVisible ? '1' : '0',
+        '--top': top
+      }"
+    >
+      <div
+        class="screen-dropdown-menu-list-border"
+        :style="{ overflowY: dataList.length > 5 ? 'auto' : 'hidden' }"
+      >
+        <div
+          :class="[
+            'screen-dropdown-menu-list-item',
+            item.select ? 'screen-dropdown-menu-list-item-active' : ''
+          ]"
+          @click.stop="onChooseItem(item)"
+          v-for="item in dataList"
+          :key="item.value"
+        >
+          {{ item.label }}
+        </div>
       </div>
       <div class="screen-dropdown-menu-list-arrow"></div>
     </div>
@@ -126,7 +144,10 @@ export default {
   },
   mounted () {
     window.addEventListener('click', e => {
-      if (this.$refs.screenDropdownMenu && !this.$refs.screenDropdownMenu.contains(e.target)) {
+      if (
+        this.$refs.screenDropdownMenu &&
+        !this.$refs.screenDropdownMenu.contains(e.target)
+      ) {
         this.dropdownMenuVisible = false
       }
     })

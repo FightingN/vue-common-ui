@@ -25,7 +25,7 @@ const components = [
   svgIcon
 ]
 
-const install = function (Vue) {
+const install = function(Vue) {
   if (install.installed) return
   components.map(component => Vue.component(component.name, component))
 }
@@ -33,7 +33,9 @@ const install = function (Vue) {
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
-
+const requireAll = requireContext => requireContext.keys().map(requireContext)
+const req = require.context('packages/svg-icon/src/svg', false, /\.svg$/)
+requireAll(req)
 export default {
   install,
   CoButton,
