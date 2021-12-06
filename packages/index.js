@@ -9,6 +9,7 @@ import screenTable from './screen-table'
 import screenChart from './screen-chart'
 import screenMonthPicker from './screen-month-picker'
 import screenDropdownMenu from './screen-dropdown-menu'
+import screenCircleCanvas from './screen-circle-canvas'
 import svgIcon from './svg-icon'
 const components = [
   CoButton,
@@ -22,6 +23,7 @@ const components = [
   screenChart,
   screenMonthPicker,
   screenDropdownMenu,
+  screenCircleCanvas,
   svgIcon
 ]
 

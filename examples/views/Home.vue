@@ -4,6 +4,9 @@
     <!-- <co-table :theadData="theadData"></co-table> -->
     <screen-loading></screen-loading>
     <screen-dropdown-menu width="200px"></screen-dropdown-menu>
+    <screen-circle-canvas></screen-circle-canvas>
+    <screen-circle-canvas></screen-circle-canvas>
+    <!-- <screen-circle-canvas></screen-circle-canvas> -->
   </div>
 </template>
 
