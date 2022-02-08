@@ -23,12 +23,12 @@ export default class CircleCanvas {
     this.gradient = ''
     this.lineGradientColor = options.lineGradientColor
     this.radius = options.radius //圆的半径
-    this.initCanvas().then((res) => {
+    this.initCanvas().then(res => {
       this.animateDraw(this.startDeg, this.step)
     })
   }
   initCanvas() {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       this.canvas = document.getElementById(this.id)
       this.ctx = this.canvas.getContext('2d')
       this.handleDpr()
@@ -56,19 +56,32 @@ export default class CircleCanvas {
   }
   drawProgressCircle(current) {
     if (this.visibleGradient) {
-      this.gradient = this.ctx.createLinearGradient(this.radius, 0, this.radius, this.radius * 2)
-      this.lineGradientColor.forEach((item) => {
+      this.gradient = this.ctx.createLinearGradient(
+        this.radius,
+        0,
+        this.radius,
+        this.radius * 2
+      )
+      this.lineGradientColor.forEach(item => {
         this.gradient.addColorStop(item.percent, item.color)
       })
     }
-    this.ctx.strokeStyle = this.visibleGradient ? this.gradient : this.progressColor
+    this.ctx.strokeStyle = this.visibleGradient
+      ? this.gradient
+      : this.progressColor
     this.ctx.lineWidth = this.progressWidth
     this.ctx.beginPath()
     this.ctx.lineCap = 'round'
     /***
       目标值计算公式: Math.PI * (1.5 + (2 * this.percentage) / 100)
     */
-    this.ctx.arc(this.x, this.y, this.radius, this.deg2Arc(270), Math.PI * (1.5 + (2 * current) / 100)) // 参数3是圆的半径
+    this.ctx.arc(
+      this.x,
+      this.y,
+      this.radius,
+      this.deg2Arc(270),
+      Math.PI * (1.5 + (2 * current) / 100)
+    ) // 参数3是圆的半径
     // this.ctx.arc(this.x, this.y, this.radius, this.deg2Arc(270), this.deg2Arc(90)) // 参数3是圆的半径
     this.ctx.stroke()
   }
@@ -79,7 +92,13 @@ export default class CircleCanvas {
     this.ctx.fillStyle = this.pointColor
     this.ctx.beginPath()
     // this.ctx.arc(this.x, this.y + this.radius, this.pointRadius, 0, this.deg2Arc(360))
-    this.ctx.arc(pointPosition.x + this.pointRadius, pointPosition.y + this.pointRadius, this.pointRadius, 0, this.deg2Arc(360))
+    this.ctx.arc(
+      pointPosition.x + this.pointRadius,
+      pointPosition.y + this.pointRadius,
+      this.pointRadius,
+      0,
+      this.deg2Arc(360)
+    )
     this.ctx.fill()
   }
   animateDraw(current, step) {
